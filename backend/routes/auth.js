@@ -1,0 +1,45 @@
+import express from 'express'
+import jwt from 'jsonwebtoken'
+import User from '../models/User.js'
+
+const router = express.Router()
+const signToken = (id) => jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '7d' })
+
+router.post('/register', async (req, res) => {
+  try {
+    const { name, email, password } = req.body
+    if (!name || !email || !password) {
+      return res.status(400).json({ message: 'All fields are required' })
+    }
+    if (await User.findOne({ email })) {
+      return res.status(400).json({ message: 'Email already registered' })
+    }
+    const user = await User.create({ name, email, password })
+    res.status(201).json({
+      token: signToken(user._id),
+      user: { id: user._id, name: user.name, email: user.email, avatar: user.avatar, level: user.level, streak: user.streak, bio: user.bio, github: user.github }
+    })
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+})
+
+router.post('/login', async (req, res) => {
+  try {
+    const { email, password } = req.body
+    const user = await User.findOne({ email })
+    if (!user || !(await user.comparePassword(password))) {
+      return res.status(401).json({ message: 'Invalid email or password' })
+    }
+    user.lastActive = Date.now()
+    await user.save()
+    res.json({
+      token: signToken(user._id),
+      user: { id: user._id, name: user.name, email: user.email, avatar: user.avatar, level: user.level, streak: user.streak, bio: user.bio, github: user.github, skills: user.skills, projects: user.projects, problemsSolved: user.problemsSolved, totalHours: user.totalHours }
+    })
+  } catch (err) {
+    res.status(500).json({ message: err.message })
+  }
+})
+
+export default router
