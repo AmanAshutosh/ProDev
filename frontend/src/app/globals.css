@@ -1,0 +1,268 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* ── Page surface ────────────────────────────────────── */
+    --neu-bg: #e4e8ee;
+    --neu-shadow-out: 6px 6px 14px #c4c8ce, -6px -6px 14px #ffffff;
+    --neu-shadow-in: inset 4px 4px 10px #c4c8ce, inset -4px -4px 10px #ffffff;
+    --neu-shadow-deep: 10px 10px 24px #bcbfc4, -10px -10px 24px #ffffff;
+
+    /* ── Bento cards — dark on light bg ─────────────────── */
+    --card-bg: #252538;
+    --card-bg-2: #31314a;
+    --card-shadow-out:
+      0 8px 32px rgba(0, 0, 0, 0.28), 5px 5px 14px #14142a,
+      -5px -5px 12px #363650;
+    --card-shadow-in:
+      0 4px 18px rgba(0, 0, 0, 0.22), inset 4px 4px 12px #14142a,
+      inset -4px -4px 10px #363650;
+    --card-text: #eeeeff;
+    --card-text-muted: #9898b8;
+    --card-border: rgba(255, 255, 255, 0.07);
+
+    /* ── Hero text (on page surface) ────────────────────── */
+    --hero-text: #1a1830;
+    --hero-text-muted: #7070a0;
+
+    /* ── Nav ─────────────────────────────────────────────── */
+    --nav-bg: rgba(228, 232, 238, 0.88);
+    --nav-border: rgba(0, 0, 0, 0.08);
+  }
+
+  .dark {
+    /* ── Page surface ────────────────────────────────────── */
+    --neu-bg: #181820;
+    --neu-shadow-out: 6px 6px 14px #0e0e16, -6px -6px 14px #22222c;
+    --neu-shadow-in: inset 4px 4px 10px #0e0e16, inset -4px -4px 10px #22222c;
+    --neu-shadow-deep: 10px 10px 24px #0a0a12, -10px -10px 24px #22222c;
+
+    /* ── Bento cards — light lavender on dark bg ─────────── */
+    --card-bg: #ede9fc;
+    --card-bg-2: #ddd8f4;
+    --card-shadow-out:
+      0 8px 32px rgba(0, 0, 0, 0.55), 6px 6px 14px #c8c4dc,
+      -6px -6px 14px #ffffff;
+    --card-shadow-in:
+      0 4px 18px rgba(0, 0, 0, 0.45), inset 4px 4px 12px #c8c4dc,
+      inset -4px -4px 10px #ffffff;
+    --card-text: #18162a;
+    --card-text-muted: #6060a0;
+    --card-border: rgba(0, 0, 0, 0.08);
+
+    /* ── Hero text (on page surface) ────────────────────── */
+    --hero-text: #eeeeff;
+    --hero-text-muted: #8080b8;
+
+    /* ── Nav ─────────────────────────────────────────────── */
+    --nav-bg: rgba(24, 24, 32, 0.88);
+    --nav-border: rgba(255, 255, 255, 0.06);
+  }
+}
+
+@layer utilities {
+  /* ── Page-level neumorphism ─────────────────────────────── */
+  .neu-out {
+    box-shadow: var(--neu-shadow-out);
+  }
+  .neu-in {
+    box-shadow: var(--neu-shadow-in);
+  }
+  .neu-deep {
+    box-shadow: var(--neu-shadow-deep);
+  }
+
+  /* ── Bento card neumorphism ─────────────────────────────── */
+  .card-out {
+    box-shadow: var(--card-shadow-out);
+  }
+  .card-in {
+    box-shadow: var(--card-shadow-in);
+  }
+
+  /* ── Always-dark accent card (code terminal, stat dark) ── */
+  .card-dark {
+    background: #1c1c2e;
+    box-shadow:
+      inset 4px 4px 12px #12121e,
+      inset -4px -4px 12px #262640;
+  }
+
+  /* ── Gradient fills ─────────────────────────────────────── */
+  .gradient-purple {
+    background: linear-gradient(135deg, #6c63ff, #9f7aea);
+  }
+  .gradient-pink {
+    background: linear-gradient(135deg, #ff6584, #fc5c7d);
+  }
+  .gradient-green {
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+  }
+  .gradient-amber {
+    background: linear-gradient(135deg, #f7971e, #ffd200);
+  }
+  .gradient-teal {
+    background: linear-gradient(135deg, #38b2ac, #4299e1);
+  }
+  .gradient-indigo {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+  }
+
+  /* ── Gradient text — light mode (cards are dark → bright grad) */
+  .text-grad-purple {
+    background: linear-gradient(135deg, #8b7fff, #b48cff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-grad-amber {
+    background: linear-gradient(135deg, #f7971e, #ffd200);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-grad-green {
+    background: linear-gradient(135deg, #43e97b, #38f9d7);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-grad-teal {
+    background: linear-gradient(135deg, #38b2ac, #4299e1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .text-grad-pink {
+    background: linear-gradient(135deg, #ff6584, #fc5c7d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ── Gradient text — dark mode (cards are light → dark grad) */
+  .dark .text-grad-purple {
+    background: linear-gradient(135deg, #5b21b6, #7c3aed);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .dark .text-grad-amber {
+    background: linear-gradient(135deg, #c05621, #d97706);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .dark .text-grad-green {
+    background: linear-gradient(135deg, #166534, #059669);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .dark .text-grad-teal {
+    background: linear-gradient(135deg, #0f766e, #1d4ed8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .dark .text-grad-pink {
+    background: linear-gradient(135deg, #9d174d, #be185d);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .font-display {
+    font-family: "Google Sans", "Inter", system-ui, sans-serif;
+  }
+}
+
+/* ── Base reset ─────────────────────────────────────────────── */
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family:
+    "Google Sans",
+    "Inter",
+    system-ui,
+    -apple-system,
+    sans-serif;
+  background: var(--neu-bg);
+  min-height: 100vh;
+  transition:
+    background 0.35s ease,
+    color 0.35s ease;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #6c63ff;
+  border-radius: 2px;
+}
+
+/* ── Skeleton shimmer ───────────────────────────────────────── */
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--neu-bg) 25%,
+    rgba(255, 255, 255, 0.12) 50%,
+    var(--neu-bg) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.6s infinite;
+  border-radius: 8px;
+}
+
+/* ── Live pulse ─────────────────────────────────────────────── */
+@keyframes live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+.live-dot {
+  animation: live-pulse 1s ease-in-out infinite;
+}
+
+/* ── Ripple ─────────────────────────────────────────────────── */
+@keyframes ripple-anim {
+  to {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
+/* ── Utilities ──────────────────────────────────────────────── */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+}

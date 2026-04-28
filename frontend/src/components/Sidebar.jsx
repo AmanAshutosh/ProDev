@@ -1,16 +1,9 @@
-import { NavLink, useNavigate } from "react-router-dom";
+'use client'
+import Link from "next/link";
+import { useRouter, usePathname } from "next/navigation";
 import {
-  LayoutDashboard,
-  Code2,
-  Map,
-  Mic,
-  FileText,
-  BarChart2,
-  Radio,
-  Bot,
-  Flame,
-  User,
-  LogOut,
+  LayoutDashboard, Code2, Map, Mic, FileText,
+  BarChart2, Radio, Bot, Flame, User, LogOut,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
@@ -19,18 +12,18 @@ const SECTIONS = [
   {
     label: "Main",
     items: [
-      { to: "/", icon: LayoutDashboard, label: "Dashboard" },
-      { to: "/practice", icon: Code2, label: "Practice", badge: "NEW" },
-      { to: "/roadmap", icon: Map, label: "Roadmap" },
-      { to: "/interview", icon: Mic, label: "Interview Prep" },
+      { to: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
+      { to: "/practice",  icon: Code2,           label: "Practice", badge: "NEW" },
+      { to: "/roadmap",   icon: Map,             label: "Roadmap"  },
+      { to: "/interview", icon: Mic,             label: "Interview Prep" },
     ],
   },
   {
     label: "Tools",
     items: [
-      { to: "/resume", icon: FileText, label: "Resume" },
-      { to: "/progress", icon: BarChart2, label: "Progress" },
-      { to: "/livestream", icon: Radio, label: "Live Stream" },
+      { to: "/resume",    icon: FileText,  label: "Resume"     },
+      { to: "/progress",  icon: BarChart2, label: "Progress"   },
+      { to: "/livestream",icon: Radio,     label: "Live Stream"},
     ],
   },
   {
@@ -41,7 +34,11 @@ const SECTIONS = [
 
 export default function Sidebar() {
   const { user, logout } = useAuth();
-  const navigate = useNavigate();
+  const router   = useRouter();
+  const pathname = usePathname();
+
+  const isActive = (to) =>
+    to === "/dashboard" ? pathname === "/dashboard" : pathname.startsWith(to);
 
   return (
     <motion.aside
@@ -57,45 +54,39 @@ export default function Sidebar() {
               {label}
             </p>
             {items.map(({ to, icon: Icon, label: lbl, badge }) => (
-              <NavLink key={to} to={to} end={to === "/"}>
-                {({ isActive }) => (
-                  <motion.div
-                    whileHover={{ x: 2 }}
-                    className={`flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-[13px] font-semibold mb-0.5 transition-all duration-200 cursor-pointer ${
-                      isActive
-                        ? "neu-out text-violet-500"
-                        : "text-slate-500 dark:text-slate-400 hover:text-violet-500 hover:neu-out"
-                    }`}
-                  >
-                    <Icon size={17} />
-                    <span className="flex-1">{lbl}</span>
-                    {badge && (
-                      <span className="gradient-purple text-white rounded-md text-[9px] font-bold px-1.5 py-0.5">
-                        {badge}
-                      </span>
-                    )}
-                  </motion.div>
-                )}
-              </NavLink>
+              <Link key={to} href={to}>
+                <motion.div
+                  whileHover={{ x: 2 }}
+                  className={`flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-[13px] font-semibold mb-0.5 transition-all duration-200 cursor-pointer ${
+                    isActive(to)
+                      ? "neu-out text-violet-500"
+                      : "text-slate-500 dark:text-slate-400 hover:text-violet-500 hover:neu-out"
+                  }`}
+                >
+                  <Icon size={17} />
+                  <span className="flex-1">{lbl}</span>
+                  {badge && (
+                    <span className="gradient-purple text-white rounded-md text-[9px] font-bold px-1.5 py-0.5">
+                      {badge}
+                    </span>
+                  )}
+                </motion.div>
+              </Link>
             ))}
           </div>
         ))}
       </div>
 
-      {/* Profile / Auth section */}
       <div className="mx-2 mb-3 space-y-2">
         {user ? (
           <>
             <motion.div
               whileHover={{ x: 2 }}
-              onClick={() => navigate("/profile")}
+              onClick={() => router.push("/profile")}
               className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-[13px] font-semibold cursor-pointer text-slate-500 dark:text-slate-400 hover:text-violet-500 hover:neu-out transition-all duration-200"
             >
               <img
-                src={
-                  user.avatar ||
-                  `https://api.dicebear.com/7.x/lorelei/svg?seed=${encodeURIComponent(user.email)}&backgroundColor=b6e3f4`
-                }
+                src={user.avatar || `https://api.dicebear.com/7.x/lorelei/svg?seed=${encodeURIComponent(user.email)}&backgroundColor=b6e3f4`}
                 alt="avatar"
                 className="w-5 h-5 rounded-md object-cover"
               />
@@ -103,10 +94,7 @@ export default function Sidebar() {
             </motion.div>
             <motion.div
               whileHover={{ x: 2 }}
-              onClick={() => {
-                logout();
-                navigate("/");
-              }}
+              onClick={() => { logout(); router.push("/"); }}
               className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-[13px] font-semibold cursor-pointer text-slate-400 hover:text-red-400 hover:neu-out transition-all duration-200"
             >
               <LogOut size={17} />
@@ -116,7 +104,7 @@ export default function Sidebar() {
         ) : (
           <motion.div
             whileHover={{ x: 2 }}
-            onClick={() => navigate("/auth")}
+            onClick={() => router.push("/auth")}
             className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-[13px] font-semibold cursor-pointer text-slate-500 dark:text-slate-400 hover:text-violet-500 hover:neu-out transition-all duration-200"
           >
             <User size={17} />
@@ -125,15 +113,12 @@ export default function Sidebar() {
         )}
       </div>
 
-      {/* Streak pill */}
       <div className="mx-2 neu-in rounded-xl p-3 text-center">
         <Flame size={20} className="text-amber-400 mx-auto mb-1" />
         <div className="text-lg font-display font-extrabold text-grad-amber">
-          {user?.streak ?? 7}
+          {user?.streak ?? 0}
         </div>
-        <div className="text-[10px] text-slate-400 font-semibold">
-          Day Streak
-        </div>
+        <div className="text-[10px] text-slate-400 font-semibold">Day Streak</div>
       </div>
     </motion.aside>
   );
