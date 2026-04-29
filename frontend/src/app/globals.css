@@ -3,266 +3,285 @@
 @layer base {
   :root {
     /* ── Page surface ────────────────────────────────────── */
-    --neu-bg: #e4e8ee;
-    --neu-shadow-out: 6px 6px 14px #c4c8ce, -6px -6px 14px #ffffff;
-    --neu-shadow-in: inset 4px 4px 10px #c4c8ce, inset -4px -4px 10px #ffffff;
-    --neu-shadow-deep: 10px 10px 24px #bcbfc4, -10px -10px 24px #ffffff;
+    --bg: #f0efff;
+    --bg-alt: #e8e6ff;
 
-    /* ── Bento cards — dark on light bg ─────────────────── */
-    --card-bg: #252538;
-    --card-bg-2: #31314a;
-    --card-shadow-out:
-      0 8px 32px rgba(0, 0, 0, 0.28), 5px 5px 14px #14142a,
-      -5px -5px 12px #363650;
-    --card-shadow-in:
-      0 4px 18px rgba(0, 0, 0, 0.22), inset 4px 4px 12px #14142a,
-      inset -4px -4px 10px #363650;
-    --card-text: #eeeeff;
-    --card-text-muted: #9898b8;
-    --card-border: rgba(255, 255, 255, 0.07);
+    /* ── Cards ───────────────────────────────────────────── */
+    --card-bg: var(--bg);
+    --card-bg-2: var(--bg);
+    --card-border: rgba(91, 82, 255, 0.10);
+    --card-shadow: 6px 6px 24px rgba(148,140,200,0.30), -5px -5px 16px rgba(255,255,255,0.92);
+    --card-shadow-in: inset 4px 4px 10px rgba(148,140,200,0.22), inset -3px -3px 8px rgba(255,255,255,0.88);
 
-    /* ── Hero text (on page surface) ────────────────────── */
-    --hero-text: #1a1830;
-    --hero-text-muted: #7070a0;
+    /* ── Compat aliases (kept for existing components) ───── */
+    --card-shadow-out: var(--card-shadow);
+    --card-text: #0f0d1f;
+    --card-text-muted: #6b6880;
+    --neu-bg: var(--bg);
+    --neu-shadow-out: 6px 6px 18px rgba(148,140,200,0.30), -6px -6px 14px rgba(255,255,255,0.88);
+    --neu-shadow-in: inset 4px 4px 10px rgba(148,140,200,0.26), inset -4px -4px 8px rgba(255,255,255,0.80);
+    --neu-shadow-deep: 10px 10px 26px rgba(148,140,200,0.40), -8px -8px 20px rgba(255,255,255,0.92);
+
+    /* ── Text ────────────────────────────────────────────── */
+    --hero-text: #0f0d1f;
+    --hero-text-muted: #6b6880;
+
+    /* ── Accent ──────────────────────────────────────────── */
+    --accent: #5b52ff;
 
     /* ── Nav ─────────────────────────────────────────────── */
-    --nav-bg: rgba(228, 232, 238, 0.88);
-    --nav-border: rgba(0, 0, 0, 0.08);
+    --nav-bg: rgba(240, 239, 255, 0.92);
+    --nav-border: rgba(91, 82, 255, 0.09);
   }
 
   .dark {
     /* ── Page surface ────────────────────────────────────── */
-    --neu-bg: #181820;
-    --neu-shadow-out: 6px 6px 14px #0e0e16, -6px -6px 14px #22222c;
-    --neu-shadow-in: inset 4px 4px 10px #0e0e16, inset -4px -4px 10px #22222c;
-    --neu-shadow-deep: 10px 10px 24px #0a0a12, -10px -10px 24px #22222c;
+    --bg: #0d0c1a;
+    --bg-alt: #12111f;
 
-    /* ── Bento cards — light lavender on dark bg ─────────── */
-    --card-bg: #ede9fc;
-    --card-bg-2: #ddd8f4;
-    --card-shadow-out:
-      0 8px 32px rgba(0, 0, 0, 0.55), 6px 6px 14px #c8c4dc,
-      -6px -6px 14px #ffffff;
-    --card-shadow-in:
-      0 4px 18px rgba(0, 0, 0, 0.45), inset 4px 4px 12px #c8c4dc,
-      inset -4px -4px 10px #ffffff;
-    --card-text: #18162a;
-    --card-text-muted: #6060a0;
-    --card-border: rgba(0, 0, 0, 0.08);
+    /* ── Cards ───────────────────────────────────────────── */
+    --card-bg: var(--bg);
+    --card-bg-2: var(--bg);
+    --card-border: rgba(255, 255, 255, 0.09);
+    --card-shadow: 6px 6px 24px rgba(0,0,0,0.58), -4px -4px 12px rgba(255,255,255,0.05);
+    --card-shadow-in: inset 4px 4px 12px rgba(0,0,0,0.52), inset -3px -3px 8px rgba(255,255,255,0.04);
 
-    /* ── Hero text (on page surface) ────────────────────── */
+    --card-shadow-out: var(--card-shadow);
+    --card-text: #eeeeff;
+    --card-text-muted: #8888aa;
+    --neu-bg: var(--bg);
+    --neu-shadow-out: 6px 6px 18px rgba(0,0,0,0.55), -4px -4px 10px rgba(255,255,255,0.04);
+    --neu-shadow-in: inset 4px 4px 12px rgba(0,0,0,0.50), inset -3px -3px 8px rgba(255,255,255,0.035);
+    --neu-shadow-deep: 10px 10px 24px rgba(0,0,0,0.65), -6px -6px 14px rgba(255,255,255,0.05);
+
+    /* ── Text ────────────────────────────────────────────── */
     --hero-text: #eeeeff;
-    --hero-text-muted: #8080b8;
+    --hero-text-muted: #8080aa;
+
+    /* ── Accent ──────────────────────────────────────────── */
+    --accent: #8b7fff;
 
     /* ── Nav ─────────────────────────────────────────────── */
-    --nav-bg: rgba(24, 24, 32, 0.88);
+    --nav-bg: rgba(13, 12, 26, 0.92);
     --nav-border: rgba(255, 255, 255, 0.06);
   }
 }
 
 @layer utilities {
-  /* ── Page-level neumorphism ─────────────────────────────── */
-  .neu-out {
-    box-shadow: var(--neu-shadow-out);
-  }
-  .neu-in {
-    box-shadow: var(--neu-shadow-in);
-  }
-  .neu-deep {
-    box-shadow: var(--neu-shadow-deep);
-  }
+  /* ── Neumorphic shadow utilities ────────────────────────── */
+  .neu-out  { box-shadow: var(--neu-shadow-out); transition: box-shadow 0.15s ease; }
+  .neu-in   { box-shadow: var(--neu-shadow-in); }
+  .neu-deep { box-shadow: var(--neu-shadow-deep); }
+  .neu-card { box-shadow: var(--neu-shadow-out); transition: box-shadow 0.15s ease, transform 0.15s ease; }
+  .neu-out:active { box-shadow: var(--neu-shadow-in); }
 
-  /* ── Bento card neumorphism ─────────────────────────────── */
-  .card-out {
-    box-shadow: var(--card-shadow-out);
-  }
-  .card-in {
-    box-shadow: var(--card-shadow-in);
-  }
+  /* ── Card shadow utilities ───────────────────────────────── */
+  .card-out { box-shadow: var(--card-shadow); border: 1px solid var(--card-border); transition: box-shadow 0.2s ease, transform 0.2s ease; }
+  .card-in  { box-shadow: var(--card-shadow-in); border: 1px solid var(--card-border); }
 
-  /* ── Always-dark accent card (code terminal, stat dark) ── */
+  /* ── Dark card — surface in light, deep in dark ─────────── */
   .card-dark {
-    background: #1c1c2e;
-    box-shadow:
-      inset 4px 4px 12px #12121e,
-      inset -4px -4px 12px #262640;
+    background: var(--bg);
+    border: 1px solid rgba(91, 82, 255, 0.10);
+    box-shadow: 6px 6px 24px rgba(148,140,200,0.30), -5px -5px 16px rgba(255,255,255,0.92);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .dark .card-dark {
+    background: #07060f;
+    border-color: rgba(255, 255, 255, 0.07);
+    box-shadow: 6px 6px 24px rgba(0,0,0,0.65), -3px -3px 10px rgba(255,255,255,0.03);
+  }
+
+  /* ── Chromatic card fills ────────────────────────────────── */
+  /* Background = surface (neumorphic rule #1). Color identity lives in the shadow tint + border + icon. */
+  .card-purple-soft {
+    background: var(--bg);
+    border: 1px solid rgba(108, 99, 255, 0.14);
+    box-shadow: 6px 6px 22px rgba(108,99,255,0.18), -5px -5px 16px rgba(255,255,255,0.92);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .dark .card-purple-soft {
+    border-color: rgba(108, 99, 255, 0.16);
+    box-shadow: 6px 6px 22px rgba(0,0,0,0.58), -4px -4px 12px rgba(108,99,255,0.06);
+  }
+
+  .card-amber {
+    background: var(--bg);
+    border: 1px solid rgba(245, 158, 11, 0.16);
+    box-shadow: 6px 6px 22px rgba(200,130,10,0.20), -5px -5px 16px rgba(255,255,255,0.92);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .dark .card-amber {
+    border-color: rgba(245, 158, 11, 0.16);
+    box-shadow: 6px 6px 22px rgba(0,0,0,0.58), -4px -4px 12px rgba(245,158,11,0.06);
+  }
+
+  .card-teal {
+    background: var(--bg);
+    border: 1px solid rgba(13, 148, 136, 0.14);
+    box-shadow: 6px 6px 22px rgba(13,148,136,0.18), -5px -5px 16px rgba(255,255,255,0.92);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .dark .card-teal {
+    border-color: rgba(13, 148, 136, 0.16);
+    box-shadow: 6px 6px 22px rgba(0,0,0,0.58), -4px -4px 12px rgba(13,148,136,0.06);
+  }
+
+  .card-green {
+    background: var(--bg);
+    border: 1px solid rgba(16, 185, 129, 0.14);
+    box-shadow: 6px 6px 22px rgba(16,185,129,0.18), -5px -5px 16px rgba(255,255,255,0.92);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .dark .card-green {
+    border-color: rgba(16, 185, 129, 0.16);
+    box-shadow: 6px 6px 22px rgba(0,0,0,0.58), -4px -4px 12px rgba(16,185,129,0.06);
+  }
+
+  .card-coral {
+    background: var(--bg);
+    border: 1px solid rgba(244, 63, 94, 0.14);
+    box-shadow: 6px 6px 22px rgba(244,63,94,0.18), -5px -5px 16px rgba(255,255,255,0.92);
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .dark .card-coral {
+    border-color: rgba(244, 63, 94, 0.16);
+    box-shadow: 6px 6px 22px rgba(0,0,0,0.58), -4px -4px 12px rgba(244,63,94,0.06);
   }
 
   /* ── Gradient fills ─────────────────────────────────────── */
-  .gradient-purple {
-    background: linear-gradient(135deg, #6c63ff, #9f7aea);
-  }
-  .gradient-pink {
-    background: linear-gradient(135deg, #ff6584, #fc5c7d);
-  }
-  .gradient-green {
-    background: linear-gradient(135deg, #43e97b, #38f9d7);
-  }
-  .gradient-amber {
-    background: linear-gradient(135deg, #f7971e, #ffd200);
-  }
-  .gradient-teal {
-    background: linear-gradient(135deg, #38b2ac, #4299e1);
-  }
-  .gradient-indigo {
-    background: linear-gradient(135deg, #667eea, #764ba2);
-  }
+  .gradient-purple { background: linear-gradient(135deg, #5b52ff 0%, #9b7aea 100%); }
+  .gradient-pink   { background: linear-gradient(135deg, #f43f5e 0%, #fb7185 100%); }
+  .gradient-green  { background: linear-gradient(135deg, #10b981 0%, #34d399 100%); }
+  .gradient-amber  { background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%); }
+  .gradient-teal   { background: linear-gradient(135deg, #0d9488 0%, #22d3ee 100%); }
+  .gradient-indigo { background: linear-gradient(135deg, #6366f1 0%, #818cf8 100%); }
 
-  /* ── Gradient text — light mode (cards are dark → bright grad) */
+  /* ── Gradient text — light mode (dark on white cards) ───── */
   .text-grad-purple {
-    background: linear-gradient(135deg, #8b7fff, #b48cff);
+    background: linear-gradient(135deg, #5b52ff, #8b7aff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .text-grad-amber {
-    background: linear-gradient(135deg, #f7971e, #ffd200);
+    background: linear-gradient(135deg, #d97706, #f59e0b);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .text-grad-green {
-    background: linear-gradient(135deg, #43e97b, #38f9d7);
+    background: linear-gradient(135deg, #059669, #10b981);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .text-grad-teal {
-    background: linear-gradient(135deg, #38b2ac, #4299e1);
+    background: linear-gradient(135deg, #0891b2, #0d9488);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .text-grad-pink {
-    background: linear-gradient(135deg, #ff6584, #fc5c7d);
+    background: linear-gradient(135deg, #e11d48, #f43f5e);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  /* ── Gradient text — dark mode (cards are light → dark grad) */
+  /* ── Gradient text — dark mode (bright on dark cards) ───── */
   .dark .text-grad-purple {
-    background: linear-gradient(135deg, #5b21b6, #7c3aed);
+    background: linear-gradient(135deg, #a78bfa, #c4b5fd);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .dark .text-grad-amber {
-    background: linear-gradient(135deg, #c05621, #d97706);
+    background: linear-gradient(135deg, #f59e0b, #fcd34d);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .dark .text-grad-green {
-    background: linear-gradient(135deg, #166534, #059669);
+    background: linear-gradient(135deg, #34d399, #6ee7b7);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .dark .text-grad-teal {
-    background: linear-gradient(135deg, #0f766e, #1d4ed8);
+    background: linear-gradient(135deg, #22d3ee, #67e8f9);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
   .dark .text-grad-pink {
-    background: linear-gradient(135deg, #9d174d, #be185d);
+    background: linear-gradient(135deg, #f472b6, #f9a8d4);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
   }
 
-  .font-display {
-    font-family: "Google Sans", "Inter", system-ui, sans-serif;
-  }
+  .font-display { font-family: "Google Sans", "Inter", system-ui, sans-serif; }
 }
 
 /* ── Base reset ─────────────────────────────────────────────── */
-* {
-  box-sizing: border-box;
-}
-html {
-  scroll-behavior: smooth;
-}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
-  font-family:
-    "Google Sans",
-    "Inter",
-    system-ui,
-    -apple-system,
-    sans-serif;
-  background: var(--neu-bg);
+  font-family: "Google Sans", "Inter", system-ui, -apple-system, sans-serif;
+  background: var(--bg);
   min-height: 100vh;
-  transition:
-    background 0.35s ease,
-    color 0.35s ease;
+  transition: background 0.35s ease, color 0.35s ease;
   -webkit-font-smoothing: antialiased;
 }
 
 /* ── Scrollbar ──────────────────────────────────────────────── */
-::-webkit-scrollbar {
-  width: 4px;
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #5b52ff; border-radius: 2px; }
+
+/* ── Aurora keyframes (hero background) ─────────────────────── */
+@keyframes aurora-1 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  25%       { transform: translate(70px, -50px) scale(1.08); }
+  50%       { transform: translate(-45px, 65px) scale(0.95); }
+  75%       { transform: translate(35px, 25px) scale(1.04); }
 }
-::-webkit-scrollbar-track {
-  background: transparent;
+@keyframes aurora-2 {
+  0%, 100% { transform: translate(0px, 0px) scale(1.05); }
+  30%       { transform: translate(-75px, 55px) scale(0.94); }
+  65%       { transform: translate(55px, -65px) scale(1.10); }
 }
-::-webkit-scrollbar-thumb {
-  background: #6c63ff;
-  border-radius: 2px;
+@keyframes aurora-3 {
+  0%, 100% { transform: translate(0px, 0px) scale(1); }
+  40%       { transform: translate(45px, -75px) scale(1.12); }
+  75%       { transform: translate(-55px, 35px) scale(0.92); }
 }
+.aurora-1 { animation: aurora-1 14s ease-in-out infinite; }
+.aurora-2 { animation: aurora-2 18s ease-in-out infinite 2s; }
+.aurora-3 { animation: aurora-3 22s ease-in-out infinite 5s; }
 
 /* ── Skeleton shimmer ───────────────────────────────────────── */
 @keyframes shimmer {
-  0% {
-    background-position: 200% 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
 }
 .skeleton {
-  background: linear-gradient(
-    90deg,
-    var(--neu-bg) 25%,
-    rgba(255, 255, 255, 0.12) 50%,
-    var(--neu-bg) 75%
-  );
+  background: linear-gradient(90deg, var(--bg) 25%, rgba(91,82,255,0.06) 50%, var(--bg) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.6s infinite;
   border-radius: 8px;
 }
 
 /* ── Live pulse ─────────────────────────────────────────────── */
-@keyframes live-pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.4;
-  }
-}
-.live-dot {
-  animation: live-pulse 1s ease-in-out infinite;
-}
+@keyframes live-pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+.live-dot { animation: live-pulse 1s ease-in-out infinite; }
 
 /* ── Ripple ─────────────────────────────────────────────────── */
-@keyframes ripple-anim {
-  to {
-    transform: scale(1);
-    opacity: 0;
-  }
-}
+@keyframes ripple-anim { to { transform: scale(1); opacity: 0; } }
 
 /* ── Utilities ──────────────────────────────────────────────── */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-.no-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.pb-safe {
-  padding-bottom: env(safe-area-inset-bottom, 0px);
-}
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }

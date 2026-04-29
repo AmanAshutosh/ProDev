@@ -25,14 +25,22 @@ export default function Navbar() {
 
   return (
     <motion.nav
-      initial={{ y: -20, opacity: 0 }}
+      initial={{ y: -16, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="sticky top-0 z-50 h-16 flex items-center justify-between px-4 md:px-6 bg-(--neu-bg) border-b border-slate-200/60 dark:border-slate-700/40"
-      style={{ backdropFilter: "blur(20px)" }}
+      className="sticky top-0 z-50 h-16 flex items-center justify-between px-4 md:px-6"
+      style={{
+        background: 'var(--nav-bg)',
+        borderBottom: '1px solid var(--nav-border)',
+        backdropFilter: 'blur(14px)',
+        WebkitBackdropFilter: 'blur(14px)',
+      }}
     >
       <Link href="/" className="flex items-center gap-2.5">
-        <div className="w-9 h-9 gradient-purple rounded-xl flex items-center justify-center neu-out shrink-0">
-          <Briefcase size={18} className="text-white" />
+        <div
+          className="w-9 h-9 gradient-purple rounded-xl flex items-center justify-center shrink-0"
+          style={{ boxShadow: '0 4px 14px rgba(91,82,255,0.30)' }}
+        >
+          <Briefcase size={17} className="text-white" />
         </div>
         <span className="font-display font-extrabold text-xl text-grad-purple hidden sm:block">
           ProDev
@@ -49,8 +57,8 @@ export default function Navbar() {
               <span
                 className={`px-3.5 py-2 rounded-xl text-[13px] font-semibold transition-all duration-200 cursor-pointer block ${
                   isActive
-                    ? "text-violet-500 neu-in"
-                    : "text-slate-500 dark:text-slate-400 hover:text-violet-500"
+                    ? "bg-violet-50 dark:bg-violet-500/12 text-violet-600 dark:text-violet-400"
+                    : "text-slate-500 dark:text-slate-400 hover:text-violet-500 dark:hover:text-violet-400 hover:bg-slate-50 dark:hover:bg-white/6"
                 }`}
               >
                 {label}
@@ -70,14 +78,15 @@ export default function Navbar() {
             <motion.button
               whileTap={{ scale: 0.95 }}
               onClick={handleProfile}
-              className="hidden sm:flex items-center gap-2 neu-out rounded-xl px-3 py-1.5 cursor-pointer border-0 bg-(--neu-bg) hover:text-violet-500 transition-colors"
+              className="hidden sm:flex items-center gap-2 rounded-xl px-3 py-1.5 cursor-pointer border-0 transition-colors text-slate-600 dark:text-slate-300 hover:text-violet-500 dark:hover:text-violet-400"
+              style={{ background: 'var(--card-bg)', boxShadow: 'var(--card-shadow)' }}
             >
               <img
                 src={user.avatar || `https://api.dicebear.com/7.x/lorelei/svg?seed=${encodeURIComponent(user.email)}&backgroundColor=b6e3f4`}
                 alt="avatar"
                 className="w-6 h-6 rounded-lg object-cover"
               />
-              <span className="text-[13px] font-semibold text-slate-600 dark:text-slate-300 max-w-[80px] truncate">
+              <span className="text-[13px] font-semibold max-w-20 truncate">
                 {user.name.split(" ")[0]}
               </span>
             </motion.button>

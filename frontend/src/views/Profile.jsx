@@ -44,7 +44,7 @@ function ProjectCard({ project, i }) {
       <NeuCard>
         <div className="flex items-start justify-between mb-2">
           <div className="font-bold text-sm text-slate-700 dark:text-slate-200 flex-1 mr-2">{project.name}</div>
-          <div className="flex gap-1.5 flex-shrink-0">
+          <div className="flex gap-1.5 shrink-0">
             {project.github && (
               <a href={project.github} target="_blank" rel="noopener noreferrer"
                 className="w-7 h-7 neu-in rounded-lg flex items-center justify-center text-slate-400 hover:text-violet-500 transition-colors">
@@ -104,7 +104,7 @@ function EditModal({ user, onSave, onClose }) {
     >
       <motion.div
         initial={{ y: 60, opacity: 0 }} animate={{ y: 0, opacity: 1 }} exit={{ y: 60, opacity: 0 }}
-        className="w-full max-w-md bg-[var(--neu-bg)] rounded-2xl p-5 neu-out"
+        className="w-full max-w-md bg-(--neu-bg) rounded-2xl p-5 neu-out"
       >
         <div className="flex items-center justify-between mb-5">
           <h3 className="font-bold text-slate-700 dark:text-slate-200">Edit Profile</h3>
@@ -148,7 +148,7 @@ export default function Profile() {
   useEffect(() => {
     if (!user) { router.push('/auth'); return }
     api.get('/progress/certifications').then(setCerts).catch(() => {})
-  }, [user, navigate])
+  }, [user, router])
 
   if (!user) return null
 
@@ -176,7 +176,7 @@ export default function Profile() {
       <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}>
         <NeuCard className="mb-4">
           <div className="flex flex-col sm:flex-row items-center sm:items-start gap-4">
-            <div className="relative flex-shrink-0">
+            <div className="relative shrink-0">
               <img
                 src={avatarSrc} alt="avatar"
                 className="w-20 h-20 rounded-2xl neu-out object-cover bg-slate-100"
@@ -202,19 +202,19 @@ export default function Profile() {
               <div className="flex flex-wrap gap-2 justify-center sm:justify-start">
                 {user.github && (
                   <a href={user.github} target="_blank" rel="noopener noreferrer">
-                    <NeuButton className="!py-1.5 !text-[11px] !px-3 gap-1.5">
+                    <NeuButton className="py-1.5! text-[11px]! px-3!gap-1.5">
                       <GitFork size={12} /> GitHub
                     </NeuButton>
                   </a>
                 )}
                 {user.linkedin && (
                   <a href={user.linkedin} target="_blank" rel="noopener noreferrer">
-                    <NeuButton className="!py-1.5 !text-[11px] !px-3 gap-1.5">
+                    <NeuButton className="py-1.5! text-[11px]! px-3!gap-1.5">
                       <Link2 size={12} /> LinkedIn
                     </NeuButton>
                   </a>
                 )}
-                <NeuButton onClick={() => setEditing(true)} className="!py-1.5 !text-[11px] !px-3 gap-1.5">
+                <NeuButton onClick={() => setEditing(true)} className="py-1.5! text-[11px]! px-3!gap-1.5">
                   <Edit2 size={12} /> Edit Profile
                 </NeuButton>
               </div>
@@ -262,7 +262,7 @@ export default function Profile() {
                   className="neu-in rounded-xl px-4 py-3 flex items-center gap-3 cursor-pointer hover:neu-out transition-all duration-200"
                   onClick={() => router.push('/practice')}
                 >
-                  <div className={`w-9 h-9 rounded-xl ${d.gradient} flex items-center justify-center flex-shrink-0`}>
+                  <div className={`w-9 h-9 rounded-xl ${d.gradient} flex items-center justify-center shrink-0`}>
                     <Target size={15} className="text-white" />
                   </div>
                   <div className="flex-1 min-w-0">
@@ -272,7 +272,7 @@ export default function Profile() {
                     </div>
                     <ProgressBar value={pct} color={d.gradient} />
                   </div>
-                  {pct >= 100 && <CheckCircle2 size={15} className="text-emerald-500 flex-shrink-0" />}
+                  {pct >= 100 && <CheckCircle2 size={15} className="text-emerald-500 shrink-0" />}
                 </div>
               </motion.div>
             )
@@ -315,7 +315,7 @@ export default function Profile() {
           <NeuCard className="mb-4 text-center py-8">
             <Award size={32} className="text-slate-300 mx-auto mb-2" />
             <p className="text-sm text-slate-500 dark:text-slate-400 mb-3">Complete a full domain to earn your first certificate!</p>
-            <NeuButton variant="primary" className="!py-2 !text-xs" onClick={() => router.push('/practice')}>
+            <NeuButton variant="primary" className="py-2! text-xs!" onClick={() => router.push('/practice')}>
               Start Practicing
             </NeuButton>
           </NeuCard>
@@ -329,7 +329,7 @@ export default function Profile() {
             <GitFork size={15} className="text-slate-500 dark:text-slate-400" />
             <h2 className="font-bold text-slate-700 dark:text-slate-200 text-sm">Projects</h2>
           </div>
-          <NeuButton onClick={() => setEditing(true)} className="!py-1 !text-[11px] !px-2.5 gap-1">
+          <NeuButton onClick={() => setEditing(true)} className="py-1!text-[11px]! px-2.5! gap-1">
             <Plus size={11} /> Add
           </NeuButton>
         </div>
@@ -341,7 +341,7 @@ export default function Profile() {
           <NeuCard className="mb-4 text-center py-6">
             <GitFork size={28} className="text-slate-300 mx-auto mb-2" />
             <p className="text-sm text-slate-400 mb-3">Showcase your GitHub projects here</p>
-            <NeuButton onClick={() => setEditing(true)} className="!py-1.5 !text-xs gap-1">
+            <NeuButton onClick={() => setEditing(true)} className="py-1.5! text-xs! gap-1">
               <Plus size={11} /> Add First Project
             </NeuButton>
           </NeuCard>

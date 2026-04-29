@@ -1,5 +1,7 @@
 # frontend
 frontend/node_modules/
+frontend/.next/
+frontend/out/
 frontend/dist/
 frontend/build/
 
@@ -21,3 +23,5 @@ logs
 .vscode/
 .idea/
 coverage/
+
+node_modules/
