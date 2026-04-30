@@ -38,8 +38,14 @@ export default function LandingNav() {
         {/* Theme toggle */}
         <button
           onClick={toggle}
-          className="w-9 h-9 rounded-xl flex items-center justify-center transition-colors cursor-pointer text-slate-500 hover:text-violet-500 dark:text-slate-400 dark:hover:text-violet-400 hover:bg-slate-100 dark:hover:bg-white/8"
-          style={{ background: 'var(--card-bg)', boxShadow: 'var(--card-shadow)' }}
+          className="w-9 h-9 rounded-xl flex items-center justify-center transition-all duration-200 cursor-pointer text-slate-500 hover:text-violet-500 dark:text-slate-400 dark:hover:text-violet-400 active:scale-95"
+          style={{
+            background: 'var(--card-bg)',
+            boxShadow: 'var(--card-shadow)',
+          }}
+          onMouseDown={e => e.currentTarget.style.boxShadow = 'var(--card-shadow-in)'}
+          onMouseUp={e => e.currentTarget.style.boxShadow = 'var(--card-shadow)'}
+          onMouseLeave={e => e.currentTarget.style.boxShadow = 'var(--card-shadow)'}
         >
           {dark ? <Sun size={16} /> : <Moon size={16} />}
         </button>
@@ -56,7 +62,7 @@ export default function LandingNav() {
           <>
             <Link
               href="/auth"
-              className="rounded-xl px-4 py-2 text-sm font-semibold transition-colors text-slate-600 hover:text-violet-500 dark:text-slate-400 dark:hover:text-violet-400"
+              className="rounded-xl px-4 py-2 text-sm font-semibold transition-all duration-200 hover:scale-[1.02] active:scale-95 text-slate-600 hover:text-violet-500 dark:text-slate-400 dark:hover:text-violet-400"
               style={{ background: 'var(--card-bg)', boxShadow: 'var(--card-shadow)' }}
             >
               Sign In

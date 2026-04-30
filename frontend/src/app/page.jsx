@@ -98,7 +98,9 @@ function FeatureCard({ f }) {
 
       <div
         className={`w-12 h-12 ${f.iconBg} rounded-2xl flex items-center justify-center shrink-0`}
-        style={{ boxShadow: '0 4px 14px rgba(0,0,0,0.18)' }}
+        style={{
+          boxShadow: '5px 5px 16px rgba(0,0,0,0.28), -2px -2px 8px rgba(255,255,255,0.18), inset 0 1px 0 rgba(255,255,255,0.22)',
+        }}
       >
         <Icon size={22} className="text-white" />
       </div>
@@ -117,9 +119,7 @@ function FeatureCard({ f }) {
           {f.stats.map(s => (
             <div
               key={s.l}
-              className={`rounded-xl px-3 py-2 text-center flex-1 ${
-                isDark ? 'bg-white/8 border border-white/10' : 'bg-white/60 border border-white/80 dark:bg-white/10 dark:border-white/15'
-              }`}
+              className="neu-chip rounded-xl px-3 py-2 text-center flex-1"
             >
               <div className={`text-sm font-extrabold font-display ${isDark ? 'text-violet-400' : 'text-violet-600 dark:text-violet-400'}`}>
                 {s.v}
@@ -151,7 +151,10 @@ export default function LandingPage() {
         <div className="grid grid-cols-1 lg:grid-cols-5 gap-5">
 
           {/* Headline card */}
-          <div className="lg:col-span-3 gradient-purple rounded-3xl p-8 md:p-10 text-white relative overflow-hidden flex flex-col justify-between min-h-80">
+          <div
+            className="lg:col-span-3 gradient-purple rounded-3xl p-8 md:p-10 text-white relative overflow-hidden flex flex-col justify-between min-h-80"
+            style={{ boxShadow: '8px 8px 32px rgba(91,82,255,0.40), -4px -4px 16px rgba(255,255,255,0.12), inset 0 1px 0 rgba(255,255,255,0.22)' }}
+          >
             <div
               className="absolute -top-20 -right-20 w-72 h-72 rounded-full pointer-events-none"
               style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.10) 0%, transparent 60%)' }}
@@ -407,7 +410,10 @@ export default function LandingPage() {
         </section>
 
         {/* ── CTA ─────────────────────────────────────────── */}
-        <section className="gradient-purple rounded-3xl p-10 md:p-14 text-center text-white relative overflow-hidden">
+        <section
+          className="gradient-purple rounded-3xl p-10 md:p-14 text-center text-white relative overflow-hidden"
+          style={{ boxShadow: '10px 10px 36px rgba(91,82,255,0.45), -5px -5px 18px rgba(255,255,255,0.14), inset 0 1px 0 rgba(255,255,255,0.20)' }}
+        >
           <div
             className="absolute -top-16 -right-16 w-64 h-64 rounded-full pointer-events-none"
             style={{ background: 'radial-gradient(circle, rgba(255,255,255,0.10) 0%, transparent 60%)' }}
