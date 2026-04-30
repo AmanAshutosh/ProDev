@@ -1,22 +1,29 @@
-'use client'
+"use client";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
-import { LayoutDashboard, Code2, Map, Mic, BarChart2, User } from "lucide-react";
+import {
+  LayoutDashboard,
+  Code2,
+  Map,
+  Mic,
+  BarChart2,
+  User,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
 
 const ITEMS = [
-  { to: "/dashboard", icon: LayoutDashboard, label: "Home"     },
-  { to: "/practice",  icon: Code2,           label: "Practice" },
-  { to: "/roadmap",   icon: Map,             label: "Roadmap"  },
-  { to: "/interview", icon: Mic,             label: "Prep"     },
-  { to: "/progress",  icon: BarChart2,       label: "Stats"    },
+  { to: "/dashboard", icon: LayoutDashboard, label: "Home" },
+  { to: "/practice", icon: Code2, label: "Practice" },
+  { to: "/roadmap", icon: Map, label: "Roadmap" },
+  { to: "/interview", icon: Mic, label: "Prep" },
+  { to: "/progress", icon: BarChart2, label: "Stats" },
 ];
 
 export default function BottomNav() {
-  const { user }  = useAuth();
-  const router    = useRouter();
-  const pathname  = usePathname();
+  const { user } = useAuth();
+  const router = useRouter();
+  const pathname = usePathname();
 
   const isActive = (to) =>
     to === "/dashboard" ? pathname === "/dashboard" : pathname.startsWith(to);
@@ -45,7 +52,10 @@ export default function BottomNav() {
         >
           {user ? (
             <img
-              src={user.avatar || `https://api.dicebear.com/7.x/lorelei/svg?seed=${encodeURIComponent(user.email)}&backgroundColor=b6e3f4`}
+              src={
+                user.avatar ||
+                `https://api.dicebear.com/7.x/lorelei/svg?seed=${encodeURIComponent(user.email)}&backgroundColor=b6e3f4`
+              }
               alt="avatar"
               className="w-6 h-6 rounded-lg object-cover"
             />

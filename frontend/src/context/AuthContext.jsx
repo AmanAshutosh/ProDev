@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import {
   createContext,
   useContext,
@@ -14,7 +14,7 @@ function setAuthCookie(value) {
   if (value) {
     document.cookie = `prodev-auth=1; path=/; max-age=${7 * 24 * 60 * 60}; SameSite=Lax`;
   } else {
-    document.cookie = 'prodev-auth=; path=/; max-age=0; SameSite=Lax';
+    document.cookie = "prodev-auth=; path=/; max-age=0; SameSite=Lax";
   }
 }
 
@@ -45,7 +45,10 @@ export function AuthProvider({ children }) {
   }, [hydrate]);
 
   const login = async (email, password) => {
-    const { token, user: u } = await api.post("/auth/login", { email, password });
+    const { token, user: u } = await api.post("/auth/login", {
+      email,
+      password,
+    });
     localStorage.setItem("prodev-token", token);
     setAuthCookie(true);
     setUser(u);
@@ -53,7 +56,11 @@ export function AuthProvider({ children }) {
   };
 
   const register = async (name, email, password) => {
-    const { token, user: u } = await api.post("/auth/register", { name, email, password });
+    const { token, user: u } = await api.post("/auth/register", {
+      name,
+      email,
+      password,
+    });
     localStorage.setItem("prodev-token", token);
     setAuthCookie(true);
     setUser(u);
@@ -73,7 +80,9 @@ export function AuthProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ user, authLoading, login, register, logout, updateUser }}>
+    <AuthContext.Provider
+      value={{ user, authLoading, login, register, logout, updateUser }}
+    >
       {children}
     </AuthContext.Provider>
   );

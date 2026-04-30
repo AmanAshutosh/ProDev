@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { createContext, useContext, useState, useEffect } from "react";
 
 const ThemeContext = createContext();
@@ -8,7 +8,9 @@ export function ThemeProvider({ children }) {
 
   useEffect(() => {
     const saved = localStorage.getItem("pj-theme");
-    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    ).matches;
     setDark(saved ? saved === "dark" : prefersDark);
   }, []);
 

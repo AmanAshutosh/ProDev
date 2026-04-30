@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import { motion } from "framer-motion";
 import { Trophy, Flame, Clock, Code2, Award, CheckCircle2 } from "lucide-react";
 import { NeuCard, ProgressBar, SectionHeader } from "../components/ui";
@@ -42,10 +42,11 @@ const TOOLTIP_STYLE = {
 };
 
 export default function Progress() {
-  const { getDomainPercentage, getActivityDates, getWeeklyActivity } = useProgress();
+  const { getDomainPercentage, getActivityDates, getWeeklyActivity } =
+    useProgress();
 
   const activityDates = getActivityDates();
-  const weekData      = getWeeklyActivity();
+  const weekData = getWeeklyActivity();
 
   const radarData = PRACTICE_DOMAINS.map((d) => ({
     subject: d.label.split(" ")[0],
@@ -83,12 +84,39 @@ export default function Progress() {
                     <stop offset="100%" stopColor="#6c63ff" stopOpacity={0} />
                   </linearGradient>
                 </defs>
-                <CartesianGrid strokeDasharray="3 3" stroke="rgba(128,128,128,0.1)" />
-                <XAxis dataKey="day" tick={{ fontSize: 11, fill: "#94a3b8" }} axisLine={false} tickLine={false} />
-                <YAxis tick={{ fontSize: 11, fill: "#94a3b8" }} axisLine={false} tickLine={false} allowDecimals={false} />
-                <Tooltip contentStyle={TOOLTIP_STYLE} formatter={(v) => [v, "Topics Completed"]} />
-                <Area type="monotone" dataKey="topics" stroke="#6c63ff" strokeWidth={2} fill="url(#gh)" name="Topics" />
-                <Legend iconType="circle" iconSize={8} wrapperStyle={{ fontSize: 11 }} />
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  stroke="rgba(128,128,128,0.1)"
+                />
+                <XAxis
+                  dataKey="day"
+                  tick={{ fontSize: 11, fill: "#94a3b8" }}
+                  axisLine={false}
+                  tickLine={false}
+                />
+                <YAxis
+                  tick={{ fontSize: 11, fill: "#94a3b8" }}
+                  axisLine={false}
+                  tickLine={false}
+                  allowDecimals={false}
+                />
+                <Tooltip
+                  contentStyle={TOOLTIP_STYLE}
+                  formatter={(v) => [v, "Topics Completed"]}
+                />
+                <Area
+                  type="monotone"
+                  dataKey="topics"
+                  stroke="#6c63ff"
+                  strokeWidth={2}
+                  fill="url(#gh)"
+                  name="Topics"
+                />
+                <Legend
+                  iconType="circle"
+                  iconSize={8}
+                  wrapperStyle={{ fontSize: 11 }}
+                />
               </AreaChart>
             </ResponsiveContainer>
           </NeuCard>

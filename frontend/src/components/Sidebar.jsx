@@ -1,9 +1,18 @@
-'use client'
+"use client";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import {
-  LayoutDashboard, Code2, Map, Mic, FileText,
-  BarChart2, Radio, Bot, Flame, User, LogOut,
+  LayoutDashboard,
+  Code2,
+  Map,
+  Mic,
+  FileText,
+  BarChart2,
+  Radio,
+  Bot,
+  Flame,
+  User,
+  LogOut,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { useAuth } from "../context/AuthContext";
@@ -13,17 +22,17 @@ const SECTIONS = [
     label: "Main",
     items: [
       { to: "/dashboard", icon: LayoutDashboard, label: "Dashboard" },
-      { to: "/practice",  icon: Code2,           label: "Practice", badge: "NEW" },
-      { to: "/roadmap",   icon: Map,             label: "Roadmap"  },
-      { to: "/interview", icon: Mic,             label: "Interview Prep" },
+      { to: "/practice", icon: Code2, label: "Practice", badge: "NEW" },
+      { to: "/roadmap", icon: Map, label: "Roadmap" },
+      { to: "/interview", icon: Mic, label: "Interview Prep" },
     ],
   },
   {
     label: "Tools",
     items: [
-      { to: "/resume",    icon: FileText,  label: "Resume"     },
-      { to: "/progress",  icon: BarChart2, label: "Progress"   },
-      { to: "/livestream",icon: Radio,     label: "Live Stream"},
+      { to: "/resume", icon: FileText, label: "Resume" },
+      { to: "/progress", icon: BarChart2, label: "Progress" },
+      { to: "/livestream", icon: Radio, label: "Live Stream" },
     ],
   },
   {
@@ -34,7 +43,7 @@ const SECTIONS = [
 
 export default function Sidebar() {
   const { user, logout } = useAuth();
-  const router   = useRouter();
+  const router = useRouter();
   const pathname = usePathname();
 
   const isActive = (to) =>
@@ -86,7 +95,10 @@ export default function Sidebar() {
               className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-[13px] font-semibold cursor-pointer text-slate-500 dark:text-slate-400 hover:text-violet-500 hover:neu-out transition-all duration-200"
             >
               <img
-                src={user.avatar || `https://api.dicebear.com/7.x/lorelei/svg?seed=${encodeURIComponent(user.email)}&backgroundColor=b6e3f4`}
+                src={
+                  user.avatar ||
+                  `https://api.dicebear.com/7.x/lorelei/svg?seed=${encodeURIComponent(user.email)}&backgroundColor=b6e3f4`
+                }
                 alt="avatar"
                 className="w-5 h-5 rounded-md object-cover"
               />
@@ -94,7 +106,10 @@ export default function Sidebar() {
             </motion.div>
             <motion.div
               whileHover={{ x: 2 }}
-              onClick={() => { logout(); router.push("/"); }}
+              onClick={() => {
+                logout();
+                router.push("/");
+              }}
               className="flex items-center gap-2.5 px-3 py-2.5 rounded-xl text-[13px] font-semibold cursor-pointer text-slate-400 hover:text-red-400 hover:neu-out transition-all duration-200"
             >
               <LogOut size={17} />
@@ -118,7 +133,9 @@ export default function Sidebar() {
         <div className="text-lg font-display font-extrabold text-grad-amber">
           {user?.streak ?? 0}
         </div>
-        <div className="text-[10px] text-slate-400 font-semibold">Day Streak</div>
+        <div className="text-[10px] text-slate-400 font-semibold">
+          Day Streak
+        </div>
       </div>
     </motion.aside>
   );

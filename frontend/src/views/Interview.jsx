@@ -1,13 +1,13 @@
-'use client'
+"use client";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, ChevronDown, ChevronUp } from "lucide-react";
 import { NeuCard, DiffBadge, TabBar, SectionHeader } from "../components/ui";
 import { FRONTEND_QUESTIONS } from "../data/domains/frontend";
-import { BACKEND_QUESTIONS  } from "../data/domains/backend";
-import { DSA_QUESTIONS       } from "../data/domains/dsa";
-import { DATABASE_QUESTIONS  } from "../data/domains/database";
-import { DEVOPS_QUESTIONS    } from "../data/domains/devops";
+import { BACKEND_QUESTIONS } from "../data/domains/backend";
+import { DSA_QUESTIONS } from "../data/domains/dsa";
+import { DATABASE_QUESTIONS } from "../data/domains/database";
+import { DEVOPS_QUESTIONS } from "../data/domains/devops";
 import { SYSDESIGN_QUESTIONS } from "../data/domains/systemDesign";
 
 const TABS = [
@@ -104,11 +104,11 @@ function QuestionList({ questions, withLeetcode = false }) {
 }
 
 const tabContent = {
-  frontend:  () => <QuestionList questions={FRONTEND_QUESTIONS} />,
-  backend:   () => <QuestionList questions={BACKEND_QUESTIONS} />,
-  dsa:       () => <QuestionList questions={DSA_QUESTIONS} withLeetcode />,
-  database:  () => <QuestionList questions={DATABASE_QUESTIONS} />,
-  devops:    () => <QuestionList questions={DEVOPS_QUESTIONS} />,
+  frontend: () => <QuestionList questions={FRONTEND_QUESTIONS} />,
+  backend: () => <QuestionList questions={BACKEND_QUESTIONS} />,
+  dsa: () => <QuestionList questions={DSA_QUESTIONS} withLeetcode />,
+  database: () => <QuestionList questions={DATABASE_QUESTIONS} />,
+  devops: () => <QuestionList questions={DEVOPS_QUESTIONS} />,
   sysdesign: () => <QuestionList questions={SYSDESIGN_QUESTIONS} />,
 };
 

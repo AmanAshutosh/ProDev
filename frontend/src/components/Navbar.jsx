@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import Link from "next/link";
 import { useRouter, usePathname } from "next/navigation";
 import { Moon, Sun, Briefcase, User, LogOut } from "lucide-react";
@@ -9,19 +9,22 @@ import { motion } from "framer-motion";
 
 const NAV_LINKS = [
   { to: "/dashboard", label: "Dashboard" },
-  { to: "/practice",  label: "Practice"  },
-  { to: "/roadmap",   label: "Roadmap"   },
+  { to: "/practice", label: "Practice" },
+  { to: "/roadmap", label: "Roadmap" },
   { to: "/interview", label: "Interview" },
 ];
 
 export default function Navbar() {
   const { dark, toggle } = useTheme();
-  const { user, logout }  = useAuth();
-  const router   = useRouter();
+  const { user, logout } = useAuth();
+  const router = useRouter();
   const pathname = usePathname();
 
   const handleProfile = () => router.push(user ? "/profile" : "/auth");
-  const handleLogout  = () => { logout(); router.push("/"); };
+  const handleLogout = () => {
+    logout();
+    router.push("/");
+  };
 
   return (
     <motion.nav
@@ -29,16 +32,16 @@ export default function Navbar() {
       animate={{ y: 0, opacity: 1 }}
       className="sticky top-0 z-50 h-16 flex items-center justify-between px-4 md:px-6"
       style={{
-        background: 'var(--nav-bg)',
-        borderBottom: '1px solid var(--nav-border)',
-        backdropFilter: 'blur(14px)',
-        WebkitBackdropFilter: 'blur(14px)',
+        background: "var(--nav-bg)",
+        borderBottom: "1px solid var(--nav-border)",
+        backdropFilter: "blur(14px)",
+        WebkitBackdropFilter: "blur(14px)",
       }}
     >
       <Link href="/" className="flex items-center gap-2.5">
         <div
           className="w-9 h-9 gradient-purple rounded-xl flex items-center justify-center shrink-0"
-          style={{ boxShadow: '0 4px 14px rgba(91,82,255,0.30)' }}
+          style={{ boxShadow: "0 4px 14px rgba(91,82,255,0.30)" }}
         >
           <Briefcase size={17} className="text-white" />
         </div>
@@ -49,9 +52,10 @@ export default function Navbar() {
 
       <div className="hidden md:flex items-center gap-1">
         {NAV_LINKS.map(({ to, label }) => {
-          const isActive = to === "/dashboard"
-            ? pathname === "/dashboard"
-            : pathname.startsWith(to);
+          const isActive =
+            to === "/dashboard"
+              ? pathname === "/dashboard"
+              : pathname.startsWith(to);
           return (
             <Link key={to} href={to}>
               <span
@@ -79,10 +83,16 @@ export default function Navbar() {
               whileTap={{ scale: 0.95 }}
               onClick={handleProfile}
               className="hidden sm:flex items-center gap-2 rounded-xl px-3 py-1.5 cursor-pointer border-0 transition-colors text-slate-600 dark:text-slate-300 hover:text-violet-500 dark:hover:text-violet-400"
-              style={{ background: 'var(--card-bg)', boxShadow: 'var(--card-shadow)' }}
+              style={{
+                background: "var(--card-bg)",
+                boxShadow: "var(--card-shadow)",
+              }}
             >
               <img
-                src={user.avatar || `https://api.dicebear.com/7.x/lorelei/svg?seed=${encodeURIComponent(user.email)}&backgroundColor=b6e3f4`}
+                src={
+                  user.avatar ||
+                  `https://api.dicebear.com/7.x/lorelei/svg?seed=${encodeURIComponent(user.email)}&backgroundColor=b6e3f4`
+                }
                 alt="avatar"
                 className="w-6 h-6 rounded-lg object-cover"
               />
@@ -90,12 +100,20 @@ export default function Navbar() {
                 {user.name.split(" ")[0]}
               </span>
             </motion.button>
-            <NeuButton onClick={handleLogout} className="w-9 h-9 px-0! py-0! rounded-xl" title="Sign out">
+            <NeuButton
+              onClick={handleLogout}
+              className="w-9 h-9 px-0! py-0! rounded-xl"
+              title="Sign out"
+            >
               <LogOut size={15} className="text-slate-400" />
             </NeuButton>
           </div>
         ) : (
-          <NeuButton variant="primary" className="rounded-xl gap-1.5 hidden sm:flex" onClick={handleProfile}>
+          <NeuButton
+            variant="primary"
+            className="rounded-xl gap-1.5 hidden sm:flex"
+            onClick={handleProfile}
+          >
             <User size={14} /> Sign In
           </NeuButton>
         )}

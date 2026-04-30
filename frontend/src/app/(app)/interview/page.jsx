@@ -1,2 +1,4 @@
-import Interview from '../../../views/Interview'
-export default function InterviewPage() { return <Interview /> }
+import Interview from "../../../views/Interview";
+export default function InterviewPage() {
+  return <Interview />;
+}

@@ -13,7 +13,14 @@ connectDB()
 const app = express()
 
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  origin: (origin, cb) => {
+    // Allow any localhost port in dev, plus the configured CLIENT_URL in prod
+    if (!origin || /^http:\/\/localhost:\d+$/.test(origin) || origin === process.env.CLIENT_URL) {
+      cb(null, true)
+    } else {
+      cb(new Error(`CORS: origin ${origin} not allowed`))
+    }
+  },
   credentials: true,
 }))
 app.use(express.json({ limit: '10mb' }))
